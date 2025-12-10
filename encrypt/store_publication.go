@@ -22,6 +22,13 @@ func StoreFileOnS3(inputPath, storageRepo, name string) error {
 	s3conf.Region = s3Split[1]
 	s3conf.Bucket = s3Split[2]
 
+	if (len(s3Split) == 5) {
+		s3conf.Endpoint = s3Split[3]
+		s3conf.ID = s3Split[4]
+		s3conf.Secret = s3Split[5]
+		s3conf.ForcePathStyle = false
+	}
+
 	var store storage.Store
 	// init the S3 storage
 	store, err := storage.S3(s3conf)
