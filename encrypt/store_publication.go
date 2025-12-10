@@ -15,17 +15,20 @@ import (
 // StoreFileOnS3 stores an encrypted file or cover image into its definitive storage.
 // it then deletes the input file.
 func StoreFileOnS3(inputPath, storageRepo, name string) error {
-
-	s3Split := strings.Split(storageRepo, ":")
+	processed := strings.Replace(storageRepo, "://", "\x00", 1)
+	configSplit := strings.Split(processed, ":")
+	for i := range configSplit {
+		configSplit[i] = strings.Replace(configSplit[i], "\x00", "://", 1)
+	}
 
 	s3conf := storage.S3Config{}
-	s3conf.Region = s3Split[1]
-	s3conf.Bucket = s3Split[2]
+	s3conf.Region = configSplit[1]
+	s3conf.Bucket = configSplit[2]
 
-	if (len(s3Split) == 5) {
-		s3conf.Endpoint = s3Split[3]
-		s3conf.ID = s3Split[4]
-		s3conf.Secret = s3Split[5]
+	if (len(configSplit) == 6) {
+		s3conf.Endpoint = configSplit[3]
+		s3conf.ID = configSplit[4]
+		s3conf.Secret = configSplit[5]
 		s3conf.ForcePathStyle = false
 	}
 
