@@ -1,4 +1,4 @@
-module github.com/readium/readium-lcp-server
+module github.com/gryph6/readium-lcp-server
 
 go 1.24.0
 
