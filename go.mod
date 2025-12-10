@@ -36,6 +36,7 @@ require (
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/jupiterrider/ffi v0.5.0 // indirect
+	github.com/readium/readium-lcp-server v1.12.2 // indirect
 	github.com/rickb777/plural v1.4.4 // indirect
 	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
