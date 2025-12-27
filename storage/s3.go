@@ -68,6 +68,7 @@ func (s *s3store) Add(key string, r io.ReadSeeker) (Item, error) {
 		Bucket: aws.String(s.bucket),
 		Key:    aws.String(key),
 		Body:   r,
+		ACL:	aws.String("public-read"),
 	})
 
 	item := s3item{bucket: s.bucket, key: key, store: s}
