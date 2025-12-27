@@ -22,6 +22,7 @@ import (
 type LCPServerMsgV2 struct {
 	Provider      string `json:"provider,omitempty"`
 	UUID          string `json:"uuid"`
+	AltID         string `json:"alt_id,omitempty"`
 	Title         string `json:"title"`
 	Authors       string `json:"authors,omitempty"`
 	CoverUrl      string `json:"cover_url,omitempty"`
@@ -55,7 +56,7 @@ type CMSMsg struct {
 }
 
 // NotifyLCPServer notifies the License Server of the encryption of a publication
-func NotifyLCPServer(pub Publication, prov, lcpsv string, v2 bool, username string, password string, verbose bool) error {
+func NotifyLCPServer(pub Publication, prov, lcpsv string, v2 bool, username string, password string, verbose, genAltid bool) error {
 
 	// An empty notify URL is not an error, simply a silent encryption
 	if lcpsv == "" {
@@ -110,6 +111,10 @@ func NotifyLCPServer(pub Publication, prov, lcpsv string, v2 bool, username stri
 		var msg LCPServerMsgV2
 		msg.Provider = prov
 		msg.UUID = pub.UUID
+		if genAltid {
+			// use the file name (without extension) as alternative ID
+			msg.AltID = pub.AltID
+		}
 		msg.Title = pub.Title
 		for _, author := range pub.Author {
 			msg.Authors += author + ", "

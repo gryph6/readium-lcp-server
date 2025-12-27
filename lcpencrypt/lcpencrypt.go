@@ -25,7 +25,7 @@ func showHelpAndExit() {
 	fmt.Println("-contentid  optional, content identifier; if omitted a uuid is generated")
 	fmt.Println("-storage    optional, target location of the encrypted publication, without filename. File system path or s3 bucket")
 	fmt.Println("-url        optional, base url associated with the storage, without filename")
-	fmt.Println("-filename   optional, file name of the encrypted publication; if omitted, contentid is used")
+	fmt.Println("-filename   optional, file name for the encrypted publication; if omitted, contentid is used")
 	fmt.Println("-temp       optional, working folder for temporary files. If not set, the current directory will be used.")
 	fmt.Println("-cover      optional, boolean, indicates that a cover should be generated")
 	fmt.Println("-pdfnometa  optional, boolean, indicates that PDF metadata must not be extracted")
@@ -37,6 +37,8 @@ func showHelpAndExit() {
 	//fmt.Println("-password   optional, used along with lcpsv, password for the License server")
 	fmt.Println("-notify     optional, URL, notification endpoint of a CMS; syntax http://username:password@example.com")
 	fmt.Println("-verbose    optional, boolean, the information sent to the LCP Server and CMS will be displayed")
+	fmt.Println("-altid      optional, boolean, if set, the file name is used as an alternative publication ID")
+
 	fmt.Println("-output     optional, deprecated, temporary location of encrypted publications, before the License Server moves them. File system path only. This path must be directly accessible from the License Server. If not set, encrypted publications will be temporarily created into the current directory.")
 	fmt.Println("-help :     help information")
 	os.Exit(0)
@@ -67,6 +69,7 @@ func main() {
 	password := flag.String("password", "", "optional unless lcpsv is used, password for the License server")
 	notify := flag.String("notify", "", "optional, URL, notification endpoint for a CMS; its syntax is http://username:password@example.com")
 	verbose := flag.Bool("verbose", false, "optional, boolean, the information sent to the LCP Server and CMS will be displayed")
+	genAltid := flag.Bool("altid", false, "optional, boolean, if set, the file name is used as an alternative publication ID")
 
 	help := flag.Bool("help", false, "shows information")
 
@@ -122,7 +125,7 @@ func main() {
 	elapsed := time.Since(start)
 
 	// notify the license server
-	err = encrypt.NotifyLCPServer(*publication, *providerUri, *lcpsv, *v2, *username, *password, *verbose)
+	err = encrypt.NotifyLCPServer(*publication, *providerUri, *lcpsv, *v2, *username, *password, *verbose, *genAltid)
 	if err != nil {
 		exitWithError("Error notifying the LCP Server", err)
 	}
