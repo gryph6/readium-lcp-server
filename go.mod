@@ -1,4 +1,4 @@
-module github.com/gryph6/readium-lcp-server
+module github.com/readium/readium-lcp-server
 
 go 1.24.0
 
@@ -17,7 +17,6 @@ require (
 	github.com/lib/pq v1.10.9
 	github.com/mattn/go-sqlite3 v1.14.32
 	github.com/microsoft/go-mssqldb v1.9.3
-	github.com/readium/readium-lcp-server v1.12.2
 	github.com/rickb777/date v1.21.1
 	github.com/rs/cors v1.11.1
 	github.com/satori/go.uuid v1.2.1-0.20181028125025-b2ce2384e17b
