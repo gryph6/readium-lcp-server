@@ -69,8 +69,6 @@ github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c h1:+mdjkGKdHQG3305AYmd
 github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c/go.mod h1:7rwL4CYBLnjLxUqIJNnCWiEdr3bn6IUYi15bNlnbCCU=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/readium/readium-lcp-server v1.12.2 h1:2489ZkiOv+cH99aFmwz+pQvjnwP+h6N4HwBPZOzkTwc=
-github.com/readium/readium-lcp-server v1.12.2/go.mod h1:1G4KPuLtTxyZYDWR3r3mzt+u2fy1cOhYIFuoJAmEwuI=
 github.com/rickb777/date v1.21.1 h1:tUcQS8riIRoYK5kUAv5aevllFEYUEk2x8OYDyoldOn4=
 github.com/rickb777/date v1.21.1/go.mod h1:gnDexsbXViZr2fCKMrY3m6IfAF5U2vSkEaiGJcNFaLQ=
 github.com/rickb777/plural v1.4.4 h1:OpZU8uRr9P2NkYAbkLMwlKNVJyJ5HvRcRBFyXGJtKGI=
